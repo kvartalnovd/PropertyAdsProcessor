@@ -1,0 +1,7 @@
+#2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157
+# m h dom mon dow user	command
+
+* * * * * /usr/bin/nice python <path_to_root_regular_script> >> /home/adsparser/src/storage/logs/cron/crontab.log 2>&1
+
+# System cron jobs for the parser component of the adsparser application
+0 */2 * * * /usr/bin/nice python <path_to_parser_crons> >> /home/adsparser/src/storage/logs/cron/crontab.log 2>&1
