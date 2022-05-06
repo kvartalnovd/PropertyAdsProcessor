@@ -117,3 +117,10 @@ media/
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
+
+
+# Cache files
+/src/storage/cache/
+
+# Logs files
+/src/storage/logs/
