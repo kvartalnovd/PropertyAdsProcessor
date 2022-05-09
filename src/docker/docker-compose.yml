@@ -20,17 +20,19 @@ services:
     image: postgres:12
     container_name: ads_processor_postgresql
     volumes:
-      - ads_processor_postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     env_file:
       - ./.env.dev
     ports:
       - "5432:5432"
+
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+
 
   nginx:
     build: ./images/nginx
@@ -45,4 +47,4 @@ services:
 
 
 volumes:
-  ads_processor_postgres_data:
+  postgres_data:

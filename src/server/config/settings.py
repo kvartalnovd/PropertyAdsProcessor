@@ -36,6 +36,11 @@ INSTALLED_APPS = [
     # 'corsheaders',
 
     # System common components of the Property Ads Processor
+    'components.common.oauth.apps.OauthConfig',
+
+    # System components of the Property Ads Processor
+    'components.scheduler.apps.SchedulerConfig',
+    'components.integration.apps.IntegrationConfig'
 ]
 
 MIDDLEWARE = [
@@ -114,8 +119,19 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = PROJECT_DIR.joinpath("storage", "static")
 
+
+# Media files (Image: .png, .jpg, .jpeg; Docfiles: .docx, .pdf, etc.)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = PROJECT_DIR.joinpath("storage", "media")
+
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# JSON Web Token
+JWT_ALGORITHM = 'HS256'
+JWT_ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 24 hours
 
 
 # Django REST Framework
@@ -144,5 +160,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost",
     "http://localhost:8080",
     "http://127.0.0.1:8000",
-    "http://127.0.0.1"
+    "http://127.0.0.1",
+    "http://processor.io"
 ]
