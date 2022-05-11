@@ -1,0 +1,196 @@
+.authForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0px;
+    max-width: 320px;
+    width: 100%;
+    @media (min-width: 479.98px){
+        padding: 15px 10px;
+        max-width: 380px;
+    }
+    @media (min-width: 767.98px){
+        max-width: 450px;
+    }
+    @media (min-width: 991.98px){
+        max-width: 520px;
+    }
+
+    &__button{
+        font-weight: 600;
+        min-height: 52px;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+    &__form{
+        width: 100%;
+        padding-bottom: calc(15px + 25 * ((100vw - 320px) / 950));
+    }
+    &__password-link{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: calc(16px + 2 * ((100vw - 320px) / 950));
+        span{
+            margin-right: 10px;
+        }
+        &::before{
+            color: #898989;
+        }
+    }
+    &__user-manual{
+        transition: color 0.3s ease 0s;
+        font-size: calc(14px + 2 * ((100vw - 320px) / 950));
+        line-height: 120%;
+        margin: 15px 0;
+    }
+}
+
+.registerForm{
+    .checkbox-block{
+        margin-bottom: calc(20px + 15 * ((100vw - 320px) / 950));
+        margin-top: calc(20px + 15 * ((100vw - 320px) / 950));
+    }
+}
+
+.order-form{
+
+    padding: 15px 0px;
+    width: 100%;
+    @media (min-width: 479.98px){
+        padding: 15px 10px;
+    }
+    @media (min-width: 767.98px){
+        padding: 15px 0px;
+    }
+    @media (min-width: 991.98px){
+        padding: 15px 15px;
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .checkbox-block {
+        margin-top: 35px;
+    }
+}
+
+.form-control{
+    margin: 15px 0;
+    
+    &.checkbox-block label{
+        font-size: calc(16px + 2 * ((100vw - 320px) / 950));
+        font-weight: 500;
+        line-height: 120%;
+        color: #616161;
+    }
+}
+
+.checkbox-block {
+
+    &__label-with-link {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        font-size: calc(14px + 4 * ((100vw - 320px) / 950));
+        font-weight: 400;
+        line-height: 100%;
+
+        @media (min-width: 767.98px){
+            margin-left: 10px;
+        }
+
+        ._text-link{
+            font-size: calc(14px + 4 * ((100vw - 320px) / 950));
+            font-weight: 400;
+            line-height: 100%;
+            padding: 0;
+        }
+    }
+}
+
+.input{
+    &__block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        position: relative;
+    }
+
+    &__field {
+        width: 100%;
+        padding: 15px 5px 5px 5px;
+        color: #616161;
+        font-size: calc(16px + 2 * ((100vw - 320px) / 950));
+        font-weight: 500;
+        line-height: 120%;
+
+    }
+
+    &__label {
+        color: #898989;
+        font-size: calc(16px + 2 * ((100vw - 320px) / 950));
+        font-weight: 500;
+        line-height: 120%;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.3s ease 0s;
+
+        &._active{
+            overflow: visible;
+            opacity: 1;
+        }
+    }
+
+    &__error {
+        color: #f96f26;
+        font-size: calc(14px + 2 * ((100vw - 320px) / 950));
+    }
+
+    &__rigth-icon{
+        position: absolute;
+        left: 90%;
+        top: 40px;
+        cursor: pointer;
+        color:#898989;
+        font-size: calc(14px + 4 * ((100vw - 320px) / 950));
+        &:hover {
+            @media (any-hover: hover) {
+                color: #0FC0FC;
+            }
+        }
+        &._active{
+            color: #0FC0FC;
+            &:hover {
+                @media (any-hover: hover) {
+                    color: #898989;
+                }
+            }
+        }
+    }
+
+}
+
+.auth_input{
+    border-bottom: 1px solid #d8d8d8;
+    background: transparent;
+    margin-bottom:10px;
+    &._error{
+        border-bottom: 2px solid #f96f26;
+    }
+}
+
+.checkbox__label{
+    &._error{
+        &::before{
+            border: 2px solid #f96f26;
+        }
+    }
+
+    
+}

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+.section__card{
+    &._in-work{
+        opacity: 0.5;
+    }
+}
+
+.card{
+    margin-bottom: 40px;
+    // padding: 10px;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Muli', sans-serif;
+
+    &__image{
+        background-color: #2A265F;
+        min-height: 150px;
+        min-width: 350px;
+        border-radius: 20px;
+        border-top-right-radius:0;
+        border-bottom-right-radius:0;
+        box-sizing: border-box;
+        position: relative;
+        // padding-bottom: 56.2%;
+        // border: 1px solid black;
+        // margin: 20px;
+
+        img{
+            border-top-left-radius:20px;
+            border-bottom-left-radius:20px;
+        }
+    }
+
+    &__data{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        flex: 1 0 200px;
+        background-color: #fff;
+        color: #000;
+        border-radius: 20px;
+        border-top-left-radius:0;
+        border-bottom-left-radius:0;
+        padding: 20px 40px;
+        
+    }
+
+    &__item{
+        padding: 10px;
+        margin-left: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        span{
+            margin-bottom: 10px;
+            &.title{
+                font-size: 14px;
+                color: #252525;
+                display: block;
+                float: left;
+                font-weight: 600;
+                line-height: 1.66;
+                text-transform: uppercase;
+            }
+
+            &.item {
+                display: block;
+                padding-left: 130px;
+
+                &_link{
+                    padding-left: 35px;
+                }
+            }
+            
+
+            a{
+                text-decoration: none;
+                color: #5951CA;
+                transition: all 0.3s ease;
+
+                &:hover{
+                    text-decoration: underline;
+                    color: #2A265F;
+                }
+            }
+        }
+    }
+}
+
+.data-items-comtainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.delete_button{
+    padding: 15px 30px;
+    background-color: #2A265F;
+    color: #fff;
+    font-family: 'Muli', sans-serif;    
+    font-size: 14px;
+    text-align: center;
+    border-radius:30px;
+    min-width: 160px;
+    min-height: 40px;
+    justify-self: flex-end;
+
+    &:hover{
+        background-color: #3E398E;
+    }
+}
+
+.button_container{
+    display: flex;
+    justify-content: flex-end;
+}
