@@ -5,6 +5,7 @@ from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
 from components.common.oauth.endpoint.views import UserView
+from components.scheduler.services.ws_notification import NotificationConsumer
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -16,6 +17,10 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(permissions.AllowAny,)
 )
+
+websocket_urlpatterns = [
+    path('ws/notification', NotificationConsumer.as_asgi())
+]
 
 urlpatterns = [
     path('oauth/', include('components.common.oauth.urls')),

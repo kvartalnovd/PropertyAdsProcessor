@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # Third-party applications integration
     'rest_framework',
     'drf_yasg',
+    'channels',
     # 'corsheaders',
 
     # System common components of the Property Ads Processor
@@ -73,6 +74,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+ASGI_APPLICATION = "config.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("redis", 6379)],
+        },
+    },
+}
 
 
 # Database
