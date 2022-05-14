@@ -19,7 +19,7 @@ schema_view = get_schema_view(
 )
 
 websocket_urlpatterns = [
-    path('ws/notification', NotificationConsumer.as_asgi())
+    path('notification', NotificationConsumer.as_asgi())
 ]
 
 urlpatterns = [

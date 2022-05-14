@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Websocket-connection</title>
+</head>
+<body>
+<div id="test-connection">
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username"><br>
+    </div>
+    <button id="button">Click me</button>
+</div>
+
+<div id="content-from-other-users">
+    <p id="log"></p>
+</div>
+
+<script>
+    console.log(window.location.host);
+    const notificationSocket = new WebSocket(
+        'ws://' + window.location.host + '/sockets/notification'
+    );
+
+    notificationSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        console.log(data.message);
+        document.querySelector('#log').innerHtml += (data.message + '<br>');
+    };
+    notificationSocket.onclose = function (e) {
+        console.error('Chat socket closed unexpectedly');
+    }
+    document.querySelector("#button").onclick = function (e) {
+        const username = document.querySelector('#username');
+        const message = username.value + ' clicked the button!';
+        notificationSocket.send(JSON.stringify({
+            'message': message
+        }));
+    }
+
+</script>
+</body>
+</html>

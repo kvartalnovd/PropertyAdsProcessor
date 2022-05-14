@@ -60,7 +60,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [PROJECT_DIR.joinpath("www", "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,7 +131,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = PROJECT_DIR.joinpath("storage", "static")
 
-
 # Media files (Image: .png, .jpg, .jpeg; Docfiles: .docx, .pdf, etc.)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = PROJECT_DIR.joinpath("storage", "media")
@@ -173,5 +172,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8000",
     "http://127.0.0.1",
-    "http://processor.io"
+    "http://processor.io",
+    "ws://processor.io"
 ]

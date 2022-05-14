@@ -7,6 +7,7 @@ class NotificationConsumer(AsyncWebsocketConsumer):
     def __init__(self, *args, **kwargs):
         super().__init__(args, kwargs)
         self.group_name = None
+        print('WS is up')
 
     async def connect(self):
         self.group_name = 'notification'

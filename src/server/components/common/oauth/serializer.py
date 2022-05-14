@@ -6,4 +6,4 @@ from components.common.oauth import models
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.AuthUser
-        fields = ('login', 'email', 'display_name', 'country', 'city', 'bio',  'avatar')
+        fields = ('login', 'email', 'country', 'city', 'join_date')
