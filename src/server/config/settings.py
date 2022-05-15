@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # Third-party applications integration
     'rest_framework',
     'drf_yasg',
+    'channels',
     # 'corsheaders',
 
     # System common components of the Property Ads Processor
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [PROJECT_DIR.joinpath("www", "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,6 +74,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+ASGI_APPLICATION = "config.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("redis", 6379)],
+        },
+    },
+}
 
 
 # Database
@@ -119,7 +131,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = PROJECT_DIR.joinpath("storage", "static")
 
-
 # Media files (Image: .png, .jpg, .jpeg; Docfiles: .docx, .pdf, etc.)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = PROJECT_DIR.joinpath("storage", "media")
@@ -161,5 +172,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8000",
     "http://127.0.0.1",
-    "http://processor.io"
+    "http://processor.io",
+    "ws://processor.io"
 ]

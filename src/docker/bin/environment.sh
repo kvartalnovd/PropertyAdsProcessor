@@ -9,7 +9,7 @@ function exitIfError() {
   shift
   [[ $exit_code ]] &&
     ((exit_code != 0)) && {
-      echo "ERROR. $@" >&2;
+      echo "ERROR. $*" >&2;
       exit "$exit_code";
     }
 }
@@ -19,15 +19,18 @@ function exitIfError() {
 #
 # @example: loadDotenvArgs ".env.dev"
 function loadDotenvArgs() {
-    if [ ! -f ${ENVIRONMENT_FILE} ]; then
+    if [ ! -f "${ENVIRONMENT_FILE}" ]; then
       exitIfError 0 "The environment file ${ENVIRONMENT_FILE} was not found in $(pwd)";
     fi
-    echo $(cat $1 | grep -v '#' | sed 's/\r$//' | awk '/=/ {print $1}');
+    # shellcheck disable=SC2005
+    echo "$(cat $1 | grep -v '#' | sed 's/\r$//' | awk '/=/ {print $1}')";
 }
 
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )";
-cd $(dirname ${SCRIPT_DIR}/../..);  # /src/docker/
+
+# Changes the folder to: repository: /src/docker | Docker: /usr/src/app/docker
+cd "$(dirname "${SCRIPT_DIR}")" || exit;
 
 ENVIRONMENT_FILE=".env";
 if [ ! -f ${ENVIRONMENT_FILE} ]; then
@@ -37,7 +40,9 @@ fi
 
 
 # Pulling out environment variables
+# shellcheck disable=SC2046
 export $(loadDotenvArgs "${ENVIRONMENT_FILE}");
 
-DOCKER_FILE="docker-compose.yml"
-COMPOSE="docker-compose -f ${DOCKER_FILE}"
+DOCKER_FILE="docker-compose.yml";
+COMPOSE="docker-compose -f ${DOCKER_FILE}";
+export COMPOSE;
