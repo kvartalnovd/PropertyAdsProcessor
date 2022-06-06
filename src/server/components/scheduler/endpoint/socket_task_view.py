@@ -2,14 +2,14 @@ import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 
-class NotificationConsumer(AsyncWebsocketConsumer):
+class TaskNotificationConsumer(AsyncWebsocketConsumer):
 
     def __init__(self, *args, **kwargs):
         super().__init__(args, kwargs)
         self.group_name = None
 
     async def connect(self):
-        self.group_name = 'notification'
+        self.group_name = 'tasks_watchers'
         await self.channel_layer.group_add(self.group_name, self.channel_name)
         await self.accept()
 

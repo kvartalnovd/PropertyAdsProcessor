@@ -16,12 +16,13 @@ class Task(models.Model):
     guid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     integration_engine = models.ForeignKey(to=Engine, on_delete=models.SET_NULL, null=True)
 
-    original_link = models.URLField()
-    title = models.CharField(max_length=255)
+    original_link = models.URLField(unique=True)
+    title = models.CharField(max_length=255, blank=True, null=True)
     phones = models.CharField(max_length=255, blank=True, null=True)
     picture = models.URLField(blank=True, null=True)
-    upload_date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(blank=True, null=True)
 
+    upload_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=12, choices=Status.choices, default=Status.new)
     is_enabled = models.BooleanField(default=True)
 

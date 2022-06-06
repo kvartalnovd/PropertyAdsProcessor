@@ -45,4 +45,3 @@ export $(loadDotenvArgs "${ENVIRONMENT_FILE}");
 
 DOCKER_FILE="docker-compose.yml";
 COMPOSE="docker-compose -f ${DOCKER_FILE}";
-export COMPOSE;
