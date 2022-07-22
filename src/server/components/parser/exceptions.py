@@ -1,0 +1,13 @@
+
+
+class ParserEngineException(Exception):
+    ...
+
+class BreakParseProcessing(ParserEngineException):
+    ...
+
+class BaseUrlNotFound(ParserEngineException):
+    ...
+
+class MetaException(ParserEngineException):
+    ...

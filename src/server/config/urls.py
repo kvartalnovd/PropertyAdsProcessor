@@ -3,11 +3,11 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from components.scheduler.endpoint.views import WebsocketConnectionTest
+from components.scheduler.endpoint.views import WebsocketConnectionTest, ParserTest
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('components.common.http_routes')),
+    path('api/v1/', include('config.routes.api')),
     path('test', WebsocketConnectionTest.as_view()),
-    path('', include('components.common.oauth.urls')),
+    path('parser', ParserTest.as_view()),
 ]

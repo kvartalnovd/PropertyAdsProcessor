@@ -1,5 +1,4 @@
-from components.integration.services.parser.engines.core import ParserEngineCore
-
+from components.parser.engines.base_engine import BaseParserEngine
 
 LANG_RU = 'ru'
 LANG_EN = 'en'
@@ -13,10 +12,12 @@ CURRENCY_GEORGIAN_LARI_ID = 1
 CURRENCY_US_DOLLAR_ID = 0
 
 
-class MyHome(ParserEngineCore):
+class MyHome(BaseParserEngine):
 
     class Meta:
         base_url = 'https://www.myhome.ge/ru/s'
+        ad_block_selector = '.statement-card'
+        ad_blocks_on_page = (20, 25)
 
     class RequestData:
         cookies = {
@@ -27,3 +28,6 @@ class MyHome(ParserEngineCore):
 
     def page_url(self, page: int) -> str:
         return f'{self.base_url}/?Page={page}'
+
+
+# list(set(dir(Page)) - set(dir(Block())))

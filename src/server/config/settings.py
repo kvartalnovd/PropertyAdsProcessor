@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     # 'corsheaders',
 
     # System common components of the Property Ads Processor
-    'components.common.oauth.apps.OauthConfig',
 
     # System components of the Property Ads Processor
     'components.scheduler.apps.SchedulerConfig',
@@ -158,7 +157,6 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
-
 
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 }

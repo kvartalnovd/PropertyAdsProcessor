@@ -1,8 +1,8 @@
 import uuid
 
+from django.conf import settings
 from django.db import models
 
-from components.common.oauth.models import AuthUser
 from components.integration.models import Engine
 
 
@@ -21,6 +21,7 @@ class Task(models.Model):
     phones = models.CharField(max_length=255, blank=True, null=True)
     picture = models.URLField(blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
+    price = models.PositiveIntegerField()
 
     upload_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=12, choices=Status.choices, default=Status.new)
@@ -31,7 +32,7 @@ class Task(models.Model):
 
 
 class TaskInProgress(models.Model):
-    manager = models.ForeignKey(to=AuthUser, on_delete=models.CASCADE)
+    manager = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     task = models.ForeignKey(to=Task, on_delete=models.CASCADE)
     order_date = models.DateTimeField(auto_now_add=True)
 

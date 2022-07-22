@@ -26,7 +26,6 @@ class TaskMessage:
             task_uuid=message_data.get(TaskMessage.TASK_FIELD)
         )
 
-
     @property
     def type(self):
         return self._type

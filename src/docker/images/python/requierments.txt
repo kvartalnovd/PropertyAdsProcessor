@@ -3,6 +3,7 @@ django-cors-headers==3.11.0
 djangorestframework==3.13.1
 drf-yasg==1.20.0
 gunicorn==20.1.0
+grequests==0.6.0
 PyJWT==2.3.0
 psycopg2==2.9.3
 Pillow==9.1.0
@@ -11,3 +12,5 @@ channels-redis==3.4.0
 daphne==3.0.2
 django-filter==21.1
 djangorestframework-simplejwt==5.2.0
+pydantic==1.9.1
+beautifulsoup4==4.11.1
